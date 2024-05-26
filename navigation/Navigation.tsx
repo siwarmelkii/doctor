@@ -19,6 +19,8 @@ export default function Navigation() {
       console.log("user", user);
       if(user?.emailVerified){
         setUser(user);
+      }else {
+        setUser(null)
       }
     });
   }, []);

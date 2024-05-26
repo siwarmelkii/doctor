@@ -9,7 +9,7 @@ export default function Dashboard({ navigation }: { navigation: any }) {
   const [userData,setUserData]=useState<any | undefined>(null);
 
   const handleSignout = async () => {
-    if(confirm("vous voulez vous deconnecter?"))
+    // if(confirm("vous voulez vous deconnecter?"))
     await auth.signOut();
   };
 

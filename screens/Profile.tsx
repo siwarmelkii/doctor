@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { ScrollView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Colors from '../constants/Colors';
 import { auth, db } from '../firebase/firebase'; // Ensure the path is correct
+import { WebView } from 'react-native-webview';
 
 export default function Profile({ route, navigation }: { route: any, navigation: any }) {
   const [poids, setPoids] = useState('');
@@ -58,17 +59,21 @@ export default function Profile({ route, navigation }: { route: any, navigation:
   return (
     <ScrollView style={styles.container}>
       <Text style={styles.title}>Votre profil</Text>
-      <iframe seamless width="80%"  height="150" src="https://stem.ubidots.com/app/dashboards/public/widget/aDa2T6ZA5ms6ODO-1NJtYXkZ7kK5snke1ElFo36TxIU?embed=true"></iframe>
-
-      <TextInput style={styles.input} placeholder="Poids (kg)" onChangeText={setPoids} keyboardType="numeric" value={poids} />
+      {/* <iframe seamless width="80%"  height="150" src="https://stem.ubidots.com/app/dashboards/public/widget/aDa2T6ZA5ms6ODO-1NJtYXkZ7kK5snke1ElFo36TxIU?embed=true"></iframe> */}
+      {/* <iframe width="80%" height="450"  src="https://stem.ubidots.com/app/dashboards/public/widget/H7HpCgZepYjjvxuVDwePr4h6w6xb75E4VjtEsDUOO_0?embed=true"></iframe>       */}
+      <WebView
+        style={styles.webView}
+        source={{ uri: 'https://stem.ubidots.com/app/dashboards/public/widget/H7HpCgZepYjjvxuVDwePr4h6w6xb75E4VjtEsDUOO_0?embed=true' }}
+      />
+      {/* <TextInput style={styles.input} placeholder="Poids (kg)" onChangeText={setPoids} keyboardType="numeric" value={poids} />
       <TextInput style={styles.input} placeholder="Taille (cm)" onChangeText={setTaille} keyboardType="numeric" value={taille} />
       <TextInput style={styles.input} placeholder="Rythme cardiaque" onChangeText={setRythmeCardiaque} keyboardType="numeric" value={rythmeCardiaque} />
       <TextInput style={styles.input} placeholder="Tension" onChangeText={setTension} keyboardType="numeric" value={tension} />
-      <TextInput style={styles.input} placeholder="Glycémie" onChangeText={setGlycemie} keyboardType="numeric" value={glycemie} />
+      <TextInput style={styles.input} placeholder="Glycémie" onChangeText={setGlycemie} keyboardType="numeric" value={glycemie} /> */}
 
-      <TouchableOpacity style={styles.button} onPress={handleCalculIMC}>
+      {/* <TouchableOpacity style={styles.button} onPress={handleCalculIMC}>
         <Text style={styles.buttonText}>Calculer IMC</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
 
       {imc ? <Text style={styles.result}>IMC: {imc}</Text> : null}
 
@@ -137,5 +142,8 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     borderWidth: 1,
     borderColor: Colors.lightBlue,
-  }
+  },
+  webView: {
+    flex: 1,
+  },
 });

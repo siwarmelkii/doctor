@@ -2,7 +2,7 @@ import { collection, onSnapshot, query } from 'firebase/firestore';
 import {  where, getDocs } from 'firebase/firestore';
 
 import React, { useEffect, useState } from 'react';
-import "react-datepicker/dist/react-datepicker.css";
+// import "react-datepicker/dist/react-datepicker.css";
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Colors from '../constants/Colors';
 import { auth, db } from '../firebase/firebase';
